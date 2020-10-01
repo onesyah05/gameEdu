@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <style>
+      body {
+        background-color: #bdd7ee;
+        font-family: 'Crimson Pro', serif;
+        font-weight: 800;
+        /*font-size: 48px;*/
+      }
+      .h1 {
+          background: -webkit-linear-gradient(-45deg, #fd7e14 10%, #ffc107 43%, #fd7e14 91%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          line-height: 58px;
+        }
+    </style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <br>
+        <center>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h1><i class="fas fa-bars"></i> Menu</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <div class="card bg-danger">
+                        <div class="card-title">
+                            <h1 class="text-light">Angka Berapa Ini?</h1>
+                            <br>
+                            <br>
+                            <div>
+                                <h1 class="h1" style="font-size: 550%" id="angka"><b>100</b></h1>
+                                <br>
+                                <input type="text" id="answer">
+                                <br><br>
+                                <button class="btn btn-warning">
+                                    JAWAB
+                                </button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>                       
+            </div>
+        </center>
+        <audio id="benar">
+          <source src="benar.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="salah">
+          <source src="salah.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // var angka = document.getElementById("angka").value;
+        $( document ).ready(function() {
+            var x = document.getElementById("benar");
+            var y = document.getElementById("salah"); 
+            var angka = [
+                            { text: 0,value: "nol"},
+                            { text: 1,value: "satu"},
+                            {text: 2,value: "dua"},
+                            {text: 3,value: "tiga"},
+                            {text: 4,value: "empat"},
+                            {text: 5,value: "lima"},
+                            {text: 6,value: "enam"},
+                        ];
+            var rand = Math.floor((Math.random() * 6) + 1);
+            console.log(angka[rand-1]);
+            // contents.val(Math.floor((Math.random() * 100) + 1));
+            document.getElementById("angka").innerHTML = angka[rand-1].text;
+            $('button').click(function() {
+                var answer = document.getElementById("answer").value;
+
+                if (answer == angka[rand-1].value) {
+                    x.play(); 
+                    alert("Jawaban Kamu Benar !");
+                    // location.reload();
+                }else{
+                    $('body input').val(" "); 
+                    y.play();
+                    alert("Jawaban kamu hampir bendar, Ayo coba lagi !");
+
+                }
+            })
+        });
+        
+    </script>
+  </body>
+</html>
